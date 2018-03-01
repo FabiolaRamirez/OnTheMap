@@ -88,13 +88,13 @@ class UsersTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return Service.usersArray.count
+        return UsersDataSource.shared.usersList.count
     }
     
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! UserTableViewCell
-        let user = Service.usersArray[indexPath.row]
+        let user = UsersDataSource.shared.usersList[indexPath.row]
         
         cell.nameLabel.text = "\(user.firstName) \(user.lastName)"
         cell.webpageLabel.text = user.mediaURL
@@ -112,7 +112,7 @@ class UsersTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         
-        let user = Service.usersArray[indexPath.row]
+        let user = UsersDataSource.shared.usersList[indexPath.row]
         
         let app = UIApplication.shared
         if validateURL(user.mediaURL){

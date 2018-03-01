@@ -11,8 +11,8 @@ import UIKit
 
 class Service {
     
-    static var usersArray: [User] = []
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+   
+    
     
     static func logIn(username: String, password: String, success: @escaping() -> (), failure: @escaping(_ errorResponse: ErrorResponse)-> ()) {
         let request = NSMutableURLRequest(url: NSURL(string: "https://www.udacity.com/api/session")! as URL)
@@ -176,7 +176,7 @@ class Service {
                             usersList.append(User)
                         }
                     }
-                    Service.usersArray = usersList;
+                    UsersDataSource.shared.usersList = usersList
                     success()
                 }
             } else {

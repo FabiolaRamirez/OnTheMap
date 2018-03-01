@@ -10,6 +10,7 @@
 		20112797203AFAC10034EFB4 /* Preferences.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20112796203AFAC10034EFB4 /* Preferences.swift */; };
 		204420F320337111008F004A /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 204420F220337111008F004A /* LogInViewController.swift */; };
 		2046A458203A404300A48CA8 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2046A457203A404300A48CA8 /* Service.swift */; };
+		206FADE3204799EA00971825 /* UsersDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206FADE2204799EA00971825 /* UsersDataSource.swift */; };
 		2088E7D6203E53720022FE9F /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2088E7D5203E53720022FE9F /* MapViewController.swift */; };
 		20A8E0412027BC3C002A5670 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20A8E0402027BC3C002A5670 /* AppDelegate.swift */; };
 		20A8E0462027BC3C002A5670 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20A8E0442027BC3C002A5670 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		20112796203AFAC10034EFB4 /* Preferences.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preferences.swift; sourceTree = "<group>"; };
 		204420F220337111008F004A /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		2046A457203A404300A48CA8 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		206FADE2204799EA00971825 /* UsersDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsersDataSource.swift; sourceTree = "<group>"; };
 		2088E7D5203E53720022FE9F /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		20A8E03D2027BC3C002A5670 /* OntheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OntheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20A8E0402027BC3C002A5670 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				20A8E0402027BC3C002A5670 /* AppDelegate.swift */,
 				20112796203AFAC10034EFB4 /* Preferences.swift */,
 				20B58374203D031E00D54539 /* ErrorResponse.swift */,
+				206FADE2204799EA00971825 /* UsersDataSource.swift */,
 				20A8E0472027BC3C002A5670 /* Assets.xcassets */,
 				20A8E0492027BC3C002A5670 /* LaunchScreen.storyboard */,
 				20A8E04C2027BC3C002A5670 /* Info.plist */,
@@ -204,6 +207,7 @@
 				20A8E0412027BC3C002A5670 /* AppDelegate.swift in Sources */,
 				20F6BF1D2043540D0000069B /* LinkViewController.swift in Sources */,
 				20F6BF1B204350970000069B /* AddressViewController.swift in Sources */,
+				206FADE3204799EA00971825 /* UsersDataSource.swift in Sources */,
 				204420F320337111008F004A /* LogInViewController.swift in Sources */,
 				2088E7D6203E53720022FE9F /* MapViewController.swift in Sources */,
 			);

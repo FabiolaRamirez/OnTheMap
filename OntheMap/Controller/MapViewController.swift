@@ -45,7 +45,7 @@ class MapViewController: UIViewController {
         self.mapView.removeAnnotations(annotations)
         annotations = [MKPointAnnotation]()
         
-        for dictionary in Service.usersArray {
+        for dictionary in UsersDataSource.shared.usersList {
             let lat = dictionary.lat
             let long = dictionary.long
             
