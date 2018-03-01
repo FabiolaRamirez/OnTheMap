@@ -61,31 +61,38 @@ class LinkViewController: UIViewController {
             if validateURL(linkTextField.text!) == true {
                 if Preferences.getIfOverride() {
                     settingUI(true)
-                    Service.updateUserData(student: userData!, location: location, success: {() in
-                        DispatchQueue.main.async{
+                    if Reachability.isConnectedToNetwork(){
+                        Service.updateUserData(student: userData!, location: location, success: {() in
+                            DispatchQueue.main.async{
+                                self.settingUI(false)
+                                self.openMapScreen()
+                            }
+                        }, failure: {(error) in
                             self.settingUI(false)
-                            self.openMapScreen()
-                        }
-                    }, failure: {(error) in
-                        self.settingUI(false)
-                        self.alertError(self, error: error.message)
-                    })
+                            self.alertError(self, error: error.message)
+                        })
+                    }else{
+                        self.alertError(self, error: "Internet Connection not Available")
+                    }
                     
                 } else {
                     settingUI(true)
-                    Service.postNew(student: userData!, location: location, success: {() in
-                        DispatchQueue.main.async{
+                    if Reachability.isConnectedToNetwork(){
+                        Service.postNew(student: userData!, location: location, success: {() in
+                            DispatchQueue.main.async{
+                                self.settingUI(false)
+                                let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                                let viewController : UITabBarController? = storyboard.instantiateViewController(withIdentifier: "rootViewController") as? UITabBarController
+                                self.present(viewController!, animated: true, completion: nil)
+                                
+                            }
+                        }, failure: { (error) in
                             self.settingUI(false)
-                            let storyboard = UIStoryboard(name: "Main", bundle: nil)
-                            let viewController : UITabBarController? = storyboard.instantiateViewController(withIdentifier: "rootViewController") as? UITabBarController
-                            self.present(viewController!, animated: true, completion: nil)
-                            
-                        }
-                    }, failure: { (error) in
-                        self.settingUI(false)
-                        self.alertError(self, error: error.message)
-                    })
-                    
+                            self.alertError(self, error: error.message)
+                        })
+                    }else{
+                        self.alertError(self, error: "Internet Connection not Available")
+                    }
                 }
                 
             } else {

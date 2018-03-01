@@ -38,22 +38,28 @@ class LogInViewController: UIViewController {
     
     
     @IBAction func logIn(_ sender: UIButton) {
-        settingUI(true)
-        Service.logIn(username: emailTextField.text!, password: passwordTextField.text!, success:{() in
-            Service.getUserData(userId: Preferences.getUserId(), success: {() in
-                self.settingUI(false)
-                Service.getExtraUserInfo(uniqueKey: Preferences.getUserId())
-                self.openHomeScreen()
+        
+        if emailTextField.text == "" || passwordTextField.text == "" {
+            self.alertError(self, error: "Please enter information")
+        } else {
+            
+            settingUI(true)
+            Service.logIn(username: emailTextField.text!, password: passwordTextField.text!, success:{() in
+                Service.getUserData(userId: Preferences.getUserId(), success: {() in
+                    self.settingUI(false)
+                    Service.getExtraUserInfo(uniqueKey: Preferences.getUserId())
+                    self.openHomeScreen()
+                    
+                }, failure: {(error) in
+                    self.settingUI(false)
+                    self.alertError(self, error: error.message)
+                })
                 
             }, failure: {(error) in
                 self.settingUI(false)
                 self.alertError(self, error: error.message)
             })
-            
-        }, failure: {(error) in
-            self.settingUI(false)
-            self.alertError(self, error: error.message)
-        })
+        }
         
     }
     

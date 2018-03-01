@@ -26,35 +26,41 @@ class Service {
             
             
             let newData = data?.subdata(in: Range(uncheckedBounds: (5, data!.count)))
-            let parsedResult = try? JSONSerialization.jsonObject(with: newData!, options: .allowFragments)
             
-            guard (error == nil) else {
-                let e = ErrorResponse(message: "Request error: \(String(describing: error))")
-                failure(e)
-                return
-            }
-            
-            guard let dictionary = parsedResult as? [String: Any] else {
-                let e = ErrorResponse(message: "Can't Parse Dictionary")
-                failure(e)
+            if let nd = newData {
+                let parsedResult = try? JSONSerialization.jsonObject(with: nd, options: .allowFragments)
                 
-                return
-            }
-            
-            guard let account = dictionary["account"] as? [String:Any] else {
-                let e = ErrorResponse(message: "Cannot find key Account")
+                guard (error == nil) else {
+                    let e = ErrorResponse(message: "Request error: \(String(describing: error))")
+                    failure(e)
+                    return
+                }
+                
+                guard let dictionary = parsedResult as? [String: Any] else {
+                    let e = ErrorResponse(message: "Can't Parse Dictionary")
+                    failure(e)
+                    return
+                }
+                
+                guard let account = dictionary["account"] as? [String:Any] else {
+                    let e = ErrorResponse(message: "Cannot find key Account")
+                    failure(e)
+                    return
+                }
+                //data
+                guard let userId = account["key"] as? String else {
+                    let e = ErrorResponse(message: "Cannot find key")
+                    failure(e)
+                    return
+                }
+                
+                Preferences.saveUserId(key: userId)
+                success()
+                
+            } else {
+                let e = ErrorResponse(message: "Can not parse data. Please try later")
                 failure(e)
-                return
             }
-            //data
-            guard let userId = account["key"] as? String else {
-                let e = ErrorResponse(message: "Cannot find key")
-                failure(e)
-                return
-            }
-            
-            Preferences.saveUserId(key: userId)
-            success()
             
         }
         

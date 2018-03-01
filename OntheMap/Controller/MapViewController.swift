@@ -24,6 +24,10 @@ class MapViewController: UIViewController {
         
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+    }
+    
     
     func getUsersList() {
         settingUI(true)
