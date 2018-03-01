@@ -32,6 +32,19 @@ class UsersTableViewController: UITableViewController {
         
     }
     
+    
+    @IBAction func logOut(_ sender: UIBarButtonItem) {
+        settingUI(true)
+        Service.logOut(success: {() in
+            self.settingUI(false)
+            self.dismiss(animated: true, completion: nil)
+        }, failure: {(error) in
+            self.settingUI(false)
+            self.alertError(self, error: error.message)
+        })
+    }
+    
+    
     func loadUsersList(){
         settingUI(true)
         Service.getUsersData(success: {() in
@@ -52,7 +65,7 @@ class UsersTableViewController: UITableViewController {
         
         let refreshAlert = UIAlertController(title: "", message: "User \(Preferences.getFirstName()) \(Preferences.getLastName()) Already posted a student location. Would you like to overwrite your current location?", preferredStyle: UIAlertControllerStyle.alert)
         refreshAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
-           
+            
         }))
         
         refreshAlert.addAction(UIAlertAction(title: "Overwride", style: .default, handler: { (action: UIAlertAction!) in
@@ -98,6 +111,16 @@ class UsersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
+        
+        let user = Service.usersArray[indexPath.row]
+        
+        let app = UIApplication.shared
+        if validateURL(user.mediaURL){
+            app.openURL(URL(string: user.mediaURL)!)
+            
+        } else {
+            self.alertError(self, error: "Invalid Link")
+        }
     }
     
 }
@@ -124,6 +147,13 @@ extension UsersTableViewController {
             }
         }
         
+    }
+    
+    func validateURL(_ url: String) -> Bool {
+        if let url = URL(string: url) {
+            return UIApplication.shared.canOpenURL(url)
+        }
+        return false
     }
     
 }
