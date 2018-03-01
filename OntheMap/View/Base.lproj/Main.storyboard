@@ -134,12 +134,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-B3-aXj">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="2Wi-B3-aXj">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2Wi-B3-aXj" firstAttribute="top" secondItem="hFs-i9-Z6I" secondAttribute="top" id="CiF-9U-Cfn"/>
+                            <constraint firstItem="2Wi-B3-aXj" firstAttribute="trailing" secondItem="hFs-i9-Z6I" secondAttribute="trailing" id="FAb-gc-BHz"/>
+                            <constraint firstItem="2Wi-B3-aXj" firstAttribute="leading" secondItem="hFs-i9-Z6I" secondAttribute="leading" id="GKi-9b-Zf1"/>
+                            <constraint firstItem="2Wi-B3-aXj" firstAttribute="bottom" secondItem="hFs-i9-Z6I" secondAttribute="bottom" id="K9o-Qc-63g"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="hFs-i9-Z6I"/>
                     </view>
                     <navigationItem key="navigationItem" title="On The Map" id="HEQ-nd-elc">
