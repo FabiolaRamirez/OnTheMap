@@ -94,10 +94,14 @@ class MapViewController: UIViewController {
         settingUI(true)
         Service.logOut(success: {() in
             self.settingUI(false)
+             DispatchQueue.main.async {
             self.dismiss(animated: true, completion: nil)
+            }
         }, failure: {(error) in
             self.settingUI(false)
+            DispatchQueue.main.async {
             self.alertError(self, error: error.message)
+            }
         })
         
     }

@@ -52,12 +52,16 @@ class LogInViewController: UIViewController {
                     
                 }, failure: {(error) in
                     self.settingUI(false)
+                    DispatchQueue.main.async {
                     self.alertError(self, error: error.message)
+                    }
                 })
                 
             }, failure: {(error) in
                 self.settingUI(false)
+                DispatchQueue.main.async {
                 self.alertError(self, error: error.message)
+                }
             })
         }
         
