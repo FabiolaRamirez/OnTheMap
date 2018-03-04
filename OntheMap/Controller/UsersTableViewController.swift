@@ -116,7 +116,7 @@ class UsersTableViewController: UITableViewController {
         
         let app = UIApplication.shared
         if validateURL(user.mediaURL){
-            app.openURL(URL(string: user.mediaURL)!)
+            app.open(URL(string: user.mediaURL)!, options: [:], completionHandler: nil)
             
         } else {
             self.alertError(self, error: "Invalid Link")

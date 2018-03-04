@@ -137,8 +137,7 @@ extension AddressViewController: UITextFieldDelegate {
     
     func unsubscribeFromKeyboardNotifications() {
         
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.removeObserver(self, name: .UIKeyboardWillHide, object: nil)
+        NotificationCenter.default.removeObserver(self)
     }
     
     @objc func keyboardWillHide(_ notification:Notification) {
